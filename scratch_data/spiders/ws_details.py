@@ -17,6 +17,7 @@ class WsDetailsSpider(scrapy.Spider):
 
     def __init__(self, **kw):
         json_path = kw.get('json_path')
+        self.save_dir = kw.get('save_dir', 'data/other')
         self.start_urls = []
         f = open(json_path, "r")
         json_file = f.read()
@@ -35,7 +36,7 @@ class WsDetailsSpider(scrapy.Spider):
         else:
             filename = 'noindex%d' % index
             index += 1
-        path = os.path.join('data', save_dir)
+        path = os.path.join(self.save_dir, save_dir)
         if not os.path.exists(path):
             os.makedirs(path)
         path = os.path.join(path, filename)
@@ -45,6 +46,7 @@ class WsDetailsSpider(scrapy.Spider):
             paragraph = sel.xpath('.//text()').extract()
             paragraph = ''.join(paragraph)
             paragraph = re.sub('\s+', '', paragraph)
+            #paragraph = re.sub('\xC2\xA0', '', paragraph)
             if paragraph != '':
                 ws.append(paragraph)
         text = '\n'.join(ws)
