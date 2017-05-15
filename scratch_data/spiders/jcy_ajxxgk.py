@@ -8,7 +8,7 @@ class ZjxflwsSpider(scrapy.Spider):
     allowed_domains = ["ajxxgk.jcy.gov.cn"]
     start_urls = ['http://www.ajxxgk.jcy.gov.cn/html/zjxflws/']
     #start_urls = start_urls + ['http://www.ajxxgk.jcy.gov.cn/html/zjxflws/%d.html' % i for i in range(2, 2722)] # 起诉书
-    start_urls = start_urls + ['http://www.ajxxgk.jcy.gov.cn/html/zjxflws/%d.html' % i for i in range(2, 3)] # 不起诉书
+    start_urls = start_urls + ['http://www.ajxxgk.jcy.gov.cn/html/zjxflws/%d.html' % i for i in range(2, 2300)] # 不起诉书
 
     def __init__(self, **kw):
         ws_type = kw.get('ws_type')

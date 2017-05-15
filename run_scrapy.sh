@@ -1,6 +1,9 @@
-﻿#!/bin/bash
-
+#!/bin/bash
+echo $PATH
+export PATH=/home/gwlin/anaconda2/bin:/home/gwlin/usr/local/jdk1.8.0_101/bin:/home/gwlin/usr/local/apache-ant-1.9.7/bin:/home/gwlin/anaconda2/bin:/home/gwlin/usr/local/jdk1.8.0_101/bin:/home/gwlin/usr/local/apache-ant-1.9.7/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/jdk1.7.0_45/bin:/usr/local/jdk1.7.0_45/jre/bin:/home/hadoop/hadoop-2.2.0/bin:/home/hadoop/hadoop-2.2.0/sbin
+echo $PATH
 TIMESTAMP=$(date -d "1 day ago" "+%Y%m%d")
+#TIMESTAMP=20170317
 QSS_JSON_FILE="data/qss-$TIMESTAMP.json"
 BQS_JSON_FILE="data/bqs-$TIMESTAMP.json"
 ALL_JSON_FILE="data/all-$TIMESTAMP.json"
@@ -17,7 +20,8 @@ function scratch_ws()
     if [ -f "$3" ]; then
         rm $3
     fi
-    scrapy crawl -a ws_type=$1 -a date=$2 zjxflws -o $3
+    scrapy crawl -a ws_type=$1  zjxflws -o $3
+    #scrapy crawl -a ws_type=$1 -a date=$2 zjxflws -o $3
     scrapy crawl -a json_path=$3 -a save_dir=$4 ws_details
 }
 

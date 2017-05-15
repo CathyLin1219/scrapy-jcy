@@ -7,8 +7,8 @@ import scrapy
 import re
 import json
 import os
-from scrapy.contrib.spiders import CrawlSpider, Rule
-from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 
 
 class WsDetailsSpider(scrapy.Spider):
